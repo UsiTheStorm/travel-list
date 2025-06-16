@@ -39,10 +39,17 @@ body {
 
 .add-form {
   background-color: #e5771f;
-  padding: 2.8rem 0;
+  padding: 2.8rem 1.6rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.8rem;
+}
+
+.form-input {
+  display: flex;
+  align-items: center;
   gap: 0.8rem;
 }
 
@@ -128,10 +135,17 @@ select:focus {
   justify-content: space-between;
 }
 
+.list li span {
+  word-break: break-word;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
 input[type='checkbox'] {
   height: 2rem;
   width: 2rem;
   accent-color: #e5771f;
+  flex-shrink: 0;
 }
 
 .list li button {
@@ -142,6 +156,7 @@ input[type='checkbox'] {
   font-size: 1.8rem;
   padding: 0.8rem;
   transform: translateY(2px);
+  flex-shrink: 0;
 }
 
 .stats {
@@ -151,11 +166,32 @@ input[type='checkbox'] {
   padding: 3.2rem 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .logo {
     font-size: 3rem;
     word-spacing: 10px;
     letter-spacing: -2px;
     padding: 1.2rem 0;
+  }
+
+  .add-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1.5rem;
+  }
+
+  .add-form h3 {
+    text-align: center;
+  }
+
+  .add-form button {
+    width: 65%;
+  }
+
+  .stats {
+    padding: 2rem 0;
+    font-size: 1.8rem;
   }
 }

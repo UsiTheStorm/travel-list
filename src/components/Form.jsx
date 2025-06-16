@@ -28,25 +28,28 @@ function Form() {
     <form className="add-form" action="submit" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip</h3>
 
-      <select
-        name="quantity"
-        id=""
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-      >
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
-          <option value={num} key={num}>
-            {num}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="item..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
+      <div className="form-input">
+        <select
+          name="quantity"
+          id=""
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        >
+          {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+            <option value={num} key={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          placeholder="item..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+          maxLength={20}
+        />
+      </div>
       <button type="submit">Add</button>
     </form>
   );
