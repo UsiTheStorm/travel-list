@@ -65,9 +65,21 @@ input {
   cursor: pointer;
 }
 
+input:focus,
+select:focus {
+  outline-offset: 2px;
+  outline-color: #76c7ad;
+}
+
 .add-form button {
   text-transform: uppercase;
   background-color: #76c7ad;
+  transition: all 0.3s;
+}
+
+.add-form button:hover {
+  background-color: #c2e389;
+  color: #5a3e2b;
 }
 
 .list {
