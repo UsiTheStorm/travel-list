@@ -1,19 +1,50 @@
-import React from 'react';
+import { useState } from 'react';
+
+import PackingList from './PackingList';
 
 function Form() {
+  const [description, setDescription] = useState('');
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!description) return;
+    // console.log(description, quantity);
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    console.log(newItem);
+
+    setDescription('');
+    setQuantity(1);
+
+    return <PackingList item={newItem} />;
+    // return <PackingList description={description} quantity={quantity} packed={false} />;
+  }
   return (
-    <div className="add-form">
+    <form className="add-form" action="submit" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip</h3>
-      <form action="submit">
-        <select name="quantity" id="">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <input type="text" placeholder="item..." />
-        <button type="submit">Add</button>
-      </form>
-    </div>
+
+      <select
+        name="quantity"
+        id=""
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        placeholder="item..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+      />
+      <button type="submit">Add</button>
+    </form>
   );
 }
 
