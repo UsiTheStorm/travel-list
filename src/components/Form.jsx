@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import PackingList from './PackingList';
 
+const initialItems = [];
+
 function Form() {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -14,10 +16,12 @@ function Form() {
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
 
+    // initialItems.push(newItem);
+
     setDescription('');
     setQuantity(1);
 
-    return <PackingList item={newItem} />;
+    // return <PackingList item={initialItems} />;
     // return <PackingList description={description} quantity={quantity} packed={false} />;
   }
   return (
