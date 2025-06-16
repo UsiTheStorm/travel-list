@@ -32,7 +32,7 @@ body {
   grid-template-rows: auto auto 1fr auto;
 }
 
-h1 {
+.logo {
   text-align: center;
   background-color: #f4a226;
   font-family: 'Monoton';

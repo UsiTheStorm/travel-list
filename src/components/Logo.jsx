@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Logo() {
-  return <div>Logo</div>;
+  return <h1 className="logo">🌴 Far Away ✈️</h1>;
 }
 
 export default Logo;
