@@ -21,11 +21,18 @@ const initialItems = [
 ];
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(newItem) {
+    setItems((prevItems) => [...prevItems, newItem]);
+    console.log(items);
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList items={initialItems} />
+      <Form onAddItems={handleAddItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   );

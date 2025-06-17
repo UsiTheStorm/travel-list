@@ -1,12 +1,18 @@
 import { useState } from 'react';
 
-import PackingList from './PackingList';
+// import PackingList from './PackingList';
 
-const initialItems = [];
-
-function Form() {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
+
+  console.log(onAddItems);
+  // const [items, setItems] = useState([]);
+
+  // function handleAddItems(newItem) {
+  //   setItems((prevItems) => [...prevItems, newItem]);
+  //   console.log(items);
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,6 +21,7 @@ function Form() {
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
+    onAddItems(newItem);
 
     // initialItems.push(newItem);
 
