@@ -14,11 +14,15 @@ function Item({ item: { quantity, description, packed } }) {
 function PackingList({ items }) {
   return (
     <div className="list">
-      <ul>
-        {items.map((item) => (
-          <Item item={item} key={item.id} />
-        ))}
-      </ul>
+      {items.length > 0 ? (
+        <ul>
+          {items.map((item) => (
+            <Item item={item} key={item.id} />
+          ))}
+        </ul>
+      ) : (
+        <p>Add your first item to the list 🤗</p>
+      )}
     </div>
   );
 }
