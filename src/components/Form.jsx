@@ -1,35 +1,21 @@
 import { useState } from 'react';
 
-// import PackingList from './PackingList';
-
 function Form({ onAddItems }) {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   console.log(onAddItems);
-  // const [items, setItems] = useState([]);
-
-  // function handleAddItems(newItem) {
-  //   setItems((prevItems) => [...prevItems, newItem]);
-  //   console.log(items);
-  // }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!description) return;
-    // console.log(description, quantity);
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
     onAddItems(newItem);
 
-    // initialItems.push(newItem);
-
     setDescription('');
     setQuantity(1);
-
-    // return <PackingList item={initialItems} />;
-    // return <PackingList description={description} quantity={quantity} packed={false} />;
   }
   return (
     <form className="add-form" action="submit" onSubmit={handleSubmit}>
