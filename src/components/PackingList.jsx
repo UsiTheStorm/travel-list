@@ -1,8 +1,15 @@
 import React from 'react';
 
-function Item({ item: { quantity, description, packed, id }, onDeleteItem }) {
+function Item({ item: { quantity, description, packed, id }, onDeleteItem, onToggleItem }) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={packed}
+        onChange={() => {
+          onToggleItem(id);
+        }}
+      />
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {quantity} {description}
       </span>
@@ -17,13 +24,18 @@ function Item({ item: { quantity, description, packed, id }, onDeleteItem }) {
   );
 }
 
-function PackingList({ items, onDeleteItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem }) {
   return (
     <div className="list">
       {items.length > 0 ? (
         <ul>
           {items.map((item) => (
-            <Item item={item} onDeleteItem={onDeleteItem} key={item.id} />
+            <Item
+              item={item}
+              onDeleteItem={onDeleteItem}
+              onToggleItem={onToggleItem}
+              key={item.id}
+            />
           ))}
         </ul>
       ) : (
