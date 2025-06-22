@@ -4,14 +4,14 @@ function Form({ onAddItems }) {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
 
-  console.log(onAddItems);
+  // console.log(onAddItems);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!description) return;
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    console.log(newItem);
+    // console.log(newItem);
     onAddItems(newItem);
 
     setDescription('');

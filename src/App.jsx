@@ -12,7 +12,7 @@ function App() {
 
   function handleAddItems(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
-    console.log(items);
+    // console.log(items);
   }
 
   function handleDeleteItem(id) {
@@ -30,7 +30,7 @@ function App() {
       <Logo />
       <Form onAddItems={handleAddItems} />
       <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={toggleItem} />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
