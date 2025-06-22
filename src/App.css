@@ -34,7 +34,7 @@ body {
   font-weight: 400;
   word-spacing: 30px;
   letter-spacing: -5px;
-  padding: 2.4rem 0;
+  padding: 1rem 0;
 }
 
 .add-form {
@@ -170,7 +170,7 @@ input[type='checkbox'] {
     font-size: 3rem;
     word-spacing: 10px;
     letter-spacing: -2px;
-    padding: 1.2rem 0;
+    padding: 0.6rem 0;
   }
 
   .add-form {
