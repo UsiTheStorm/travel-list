@@ -1,23 +1,29 @@
 import React from 'react';
 
-function Item({ item: { quantity, description, packed } }) {
+function Item({ item: { quantity, description, packed, id }, onDeleteItem }) {
   return (
     <li>
       <span style={packed ? { textDecoration: 'line-through' } : {}}>
         {quantity} {description}
       </span>
-      <button>❌</button>
+      <button
+        onClick={() => {
+          onDeleteItem(id);
+        }}
+      >
+        ❌
+      </button>
     </li>
   );
 }
 
-function PackingList({ items }) {
+function PackingList({ items, onDeleteItem }) {
   return (
     <div className="list">
       {items.length > 0 ? (
         <ul>
           {items.map((item) => (
-            <Item item={item} key={item.id} />
+            <Item item={item} onDeleteItem={onDeleteItem} key={item.id} />
           ))}
         </ul>
       ) : (
