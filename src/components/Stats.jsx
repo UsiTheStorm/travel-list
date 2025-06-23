@@ -14,7 +14,7 @@ function Stats({ items }) {
           'You got everything! Ready to go ✈️'
         ) : (
           <p>
-            💼 You have {numItems} items on your list, and you already packed {numPacked}{' '}
+            💼 You have {numItems} items on your list, and you already packed {numPacked}
             <span>(This is {numPacked === 0 ? '0' : packedPercentage}% of all staff)</span>
           </p>
         )}
