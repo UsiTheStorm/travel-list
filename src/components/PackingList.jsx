@@ -1,15 +1,6 @@
 import React, { useState } from 'react';
 import Item from './Item';
-
-function Sorting({ onSorting, currentSortingValue }) {
-  return (
-    <select name="sort" id="sortOrder" value={currentSortingValue} onChange={onSorting}>
-      <option value="input">Sort by input order</option>
-      <option value="alphabetical">Sort a-z</option>
-      <option value="packed">Sort by packed status</option>
-    </select>
-  );
-}
+import Sorting from './Sorting';
 
 function PackingList({ items, onDeleteItem, onToggleItem, onListClearing }) {
   const [sortBy, setSortBy] = useState('input');
