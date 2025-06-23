@@ -95,18 +95,12 @@ select:focus {
   padding: 4rem 0;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 6rem;
   align-items: center;
 }
 
-.list > li {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  justify-content: space-between;
-}
 .actions button,
 .list select {
   text-transform: uppercase;
