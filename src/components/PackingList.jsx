@@ -34,7 +34,7 @@ function Sorting({ onSorting, currentSortingValue }) {
   );
 }
 
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onListClearing }) {
   const [sortBy, setSortBy] = useState('input');
 
   let sortedItems;
@@ -55,6 +55,13 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
 
   return (
     <div className="list">
+      <div className="actions">
+        <Sorting onSorting={handleSortChange} currentSortingValue={sortBy} />
+        <button onClick={onListClearing} disabled={!items.length}>
+          Clear List
+        </button>
+      </div>
+
       {items.length > 0 ? (
         <ul>
           {sortedItems.map((item) => (
@@ -69,10 +76,6 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
       ) : (
         <p>Add your first item to the list 🤗</p>
       )}
-
-      <div className="actions">
-        <Sorting onSorting={handleSortChange} currentSortingValue={sortBy} />
-      </div>
     </div>
   );
 }

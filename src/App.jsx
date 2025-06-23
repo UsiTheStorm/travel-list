@@ -12,11 +12,16 @@ function App() {
 
   function handleAddItems(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
-    // console.log(items);
   }
 
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  function handleClearList() {
+    const confirmed = window.confirm('Are you shure you want to delete all items?');
+
+    if (confirmed) setItems([]);
   }
 
   function toggleItem(id) {
@@ -29,7 +34,12 @@ function App() {
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={toggleItem} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={toggleItem}
+        onListClearing={handleClearList}
+      />
       <Stats items={items} />
     </div>
   );
