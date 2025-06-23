@@ -2,20 +2,16 @@ import { useState } from 'react';
 import Item from './Item';
 import Sorting from './Sorting';
 
-function PackingList({ items, onDeleteItem, onToggleItem, onListClearing }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
   const [sortBy, setSortBy] = useState('input');
 
-  let sortedItems;
-
-  if (sortBy === 'input') {
-    sortedItems = items;
-  } else if (sortBy === 'alphabetical') {
-    sortedItems = [...items].sort((a, b) => a.description.localeCompare(b.description));
-  } else if (sortBy === 'packed') {
-    sortedItems = [...items].sort((a, b) => Number(a.packed) - Number(b.packed));
-  } else {
-    sortedItems = items;
-  }
+  // Sorting Immediately Invoked Function Expression
+  const sortedItems = (() => {
+    if (sortBy === 'alphabetical')
+      return [...items].sort((a, b) => a.description.localeCompare(b.description));
+    if (sortBy === 'packed') return [...items].sort((a, b) => Number(a.packed) - Number(b.packed));
+    return items;
+  })();
 
   function handleSortChange(e) {
     setSortBy(e.target.value);
@@ -25,12 +21,12 @@ function PackingList({ items, onDeleteItem, onToggleItem, onListClearing }) {
     <div className="list">
       <div className="actions">
         <Sorting onSorting={handleSortChange} currentSortingValue={sortBy} />
-        <button onClick={onListClearing} disabled={!items.length}>
+        <button onClick={onClearList} disabled={!items.length}>
           Clear List
         </button>
       </div>
 
-      {items.length > 0 ? (
+      {sortedItems.length > 0 ? (
         <ul>
           {sortedItems.map((item) => (
             <Item

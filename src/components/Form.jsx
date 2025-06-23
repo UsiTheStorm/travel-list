@@ -10,15 +10,14 @@ function Form({ onAddItems }) {
     e.preventDefault();
     if (!description) return;
 
-    const newItem = { description, quantity, packed: false, id: Date.now() };
-    // console.log(newItem);
+    const newItem = { description, quantity, packed: false, id: crypto.randomUUID() };
     onAddItems(newItem);
 
     setDescription('');
     setQuantity(1);
   }
   return (
-    <form className="add-form" action="submit" onSubmit={handleSubmit}>
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip</h3>
 
       <div className="form-input">
@@ -37,6 +36,7 @@ function Form({ onAddItems }) {
         <input
           type="text"
           placeholder="item..."
+          autoFocus
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required

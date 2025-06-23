@@ -10,8 +10,12 @@ import Stats from './components/Stats';
 function App() {
   function getInitialItems() {
     const storedItems = localStorage.getItem('packingListItems');
-    console.log('Loaded from localStorage:', storedItems ? JSON.parse(storedItems) : []);
-    return storedItems ? JSON.parse(storedItems) : [];
+    try {
+      return storedItems ? JSON.parse(storedItems) : [];
+    } catch (error) {
+      console.error('Error parsing items from localStorage', error);
+      return [];
+    }
   }
 
   const [items, setItems] = useState(getInitialItems);
@@ -29,7 +33,7 @@ function App() {
   }
 
   function handleClearList() {
-    const confirmed = window.confirm('Are you shure you want to delete all items?');
+    const confirmed = window.confirm('Are you sure you want to delete all items?');
 
     if (confirmed) setItems([]);
   }
@@ -48,7 +52,7 @@ function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItem={toggleItem}
-        onListClearing={handleClearList}
+        onClearList={handleClearList}
       />
       <Stats items={items} />
     </div>

@@ -5,7 +5,7 @@ function Stats({ items }) {
 
   const numPacked = items.filter((i) => i.packed).length;
 
-  const packedPercentage = Math.floor((numPacked / numItems) * 100);
+  const packedPercentage = numItems === 0 ? 0 : Math.floor((numPacked / numItems) * 100);
 
   return (
     <footer className="stats">
