@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
 
@@ -8,7 +8,17 @@ import PackingList from './components/PackingList';
 import Stats from './components/Stats';
 
 function App() {
-  const [items, setItems] = useState([]);
+  function getInitialItems() {
+    const storedItems = localStorage.getItem('packingListItems');
+    console.log('Loaded from localStorage:', storedItems ? JSON.parse(storedItems) : []);
+    return storedItems ? JSON.parse(storedItems) : [];
+  }
+
+  const [items, setItems] = useState(getInitialItems);
+
+  useEffect(() => {
+    localStorage.setItem('packingListItems', JSON.stringify(items));
+  }, [items]);
 
   function handleAddItems(newItem) {
     setItems((prevItems) => [...prevItems, newItem]);
